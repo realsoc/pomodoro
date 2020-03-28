@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -28,6 +28,8 @@ dependencies:
   toast: ^0.1.5
   lottie: 0.3.2
   url_launcher: 5.4.2
+  screen: 0.0.5
+  audioplayers: ^0.14.2
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,9 @@ flutter:
     - assets/anims/linkedin.json
     - assets/anims/email.json
     - assets/anims/instagram.json
+    - assets/sounds/done.flac
+    - assets/sounds/work.wav
+    - assets/sounds/rest.wav
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
@@ -68,9 +73,11 @@ flutter:
     - family: CustomIcons
       fonts:
         - asset: assets/fonts/CustomIcons.ttf
-    - family: Tomato
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/Tomato-Regular.ttf
+        - asset: assets/fonts/Roboto-Black.ttf
+
+
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pomodoro/models/title_item.dart';
-import 'package:toast/toast.dart';
 
 class TasksScreen extends StatefulWidget {
 
@@ -59,7 +58,6 @@ class _TasksScreenState extends State<TasksScreen> {
                         )
                     ),
                     onDismissed: (direction) {
-                      Toast.show("Task ${e.title} removed", context);
                       widget.onDismissed(e);
                     },
 

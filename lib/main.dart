@@ -8,7 +8,6 @@ import 'package:pomodoro/screens/infos_screen.dart';
 import 'package:pomodoro/screens/pomodoro_screen.dart';
 import 'package:pomodoro/screens/tasks_screen.dart';
 import 'package:pomodoro/screens/timer_screen.dart';
-import 'package:toast/toast.dart';
 
 import 'constants/tab.dart';
 
@@ -19,11 +18,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: MyHomePage.id,
+      routes: {
+        MyHomePage.id : (context) => MyHomePage(),
+        TimerScreen.id : (context) => TimerScreen()
+
+      },
       title: 'Flutter Demo',
-      darkTheme: ThemeData(
-          fontFamily: 'Tomato',
-          primarySwatch: tomato
-      ),
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        fontFamily: 'Tomato',
+        fontFamily: 'Roboto',
         primarySwatch: tomato,
       ),
       home: MyHomePage(title: 'Liste'),
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+
+  static final String id = "home";
+
   MyHomePage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -91,14 +95,14 @@ class _MyHomePageState extends State<MyHomePage> {
       case TabType.LIST:
         return FloatingActionButton(
           onPressed: _newTask,
-          tooltip: 'Add a task',
+          tooltip: 'Ajoute une tâche',
           child: Icon(Icons.add),
         );
         break;
       case TabType.POMODORO:
         return FloatingActionButton(
           onPressed: _startTimer,
-          tooltip: 'Start timer',
+          tooltip: 'Démarre le timer',
           child: Icon(Icons.play_arrow),
         );
         break;
@@ -115,19 +119,19 @@ class _MyHomePageState extends State<MyHomePage> {
         return AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text("Liste"),
+          title: Text("Liste", style: TextStyle(fontSize: 25),),
           actions: <Widget>[
             FlatButton(
               child: Icon(Icons.play_arrow, color: Colors.white,),
               onPressed: () {
                 if (tasks.isEmpty) {
                   showDialog(context: context, child: TextDialog(
-                    title: "Warning",
-                    text: "Please enter at least a task before launching the timer",
-                    confirmLabel: "ok",
+                    title: "Attention",
+                    text: "Ajoute une tâche avant de démarrer le chrono",
+                    confirmLabel: "Ok",
                   ));
                 } else {
-                  Toast.show("Start timer", context);
+                  _startTimer(tasks: tasks);
                 }
               },
             )
@@ -138,14 +142,14 @@ class _MyHomePageState extends State<MyHomePage> {
         return AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text("Pomodoro"),
+          title: Text("Pomodoro", style: TextStyle(fontSize: 25),),
         );
         break;
       case TabType.INFO:
         return AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text("Infos"),
+          title: Text("Infos", style: TextStyle(fontSize: 25),),
         );
         break;
     }
@@ -156,10 +160,10 @@ class _MyHomePageState extends State<MyHomePage> {
     String newTask = await showDialog(
         context: context,
         child: InputDialog(
-          title: "New Task",
-          cancelLabel: "Cancel",
-          confirmLabel: "Add",
-          hint: "Add a new task",
+          title: "Nouvelle tâche",
+          cancelLabel: "Annuler",
+          confirmLabel: "Ajouter",
+          hint: "Ajoute une nouvelle tâche",
         ));
     if (newTask != null && newTask.isNotEmpty) {
       setState(() {
@@ -168,8 +172,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _startTimer() {
-    Toast.show("Start timer", context);
+  void _startTimer({List<TitleItem> tasks}) {
+    Navigator.pushReplacementNamed(context, TimerScreen.id, arguments: tasks);
   }
 
   @override
@@ -193,7 +197,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
         onTap: (index) {
           setState(() {
-
             selectedTab = TabType.values[index];
           });
         },

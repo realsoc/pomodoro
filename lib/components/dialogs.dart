@@ -16,7 +16,7 @@ class _BaseDialogState extends State<_BaseDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: tomato,
-      title: Text(widget.title, style: TextStyle(fontSize: 20, color: Colors.white),),
+      title: Text(widget.title, style: TextStyle(fontSize: 25, color: Colors.white),),
       content: widget.child,
     );
   }
@@ -90,6 +90,8 @@ class _InputDialogState extends State<InputDialog> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           TextField(
+            textCapitalization: TextCapitalization.sentences,
+            keyboardType: TextInputType.text,
             autofocus: true,
             onChanged: (newText) {
               setState(() {

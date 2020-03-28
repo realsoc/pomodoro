@@ -15,11 +15,11 @@ class _PomodoroScreenState extends State<PomodoroScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Je m'occupe pendant", style: TextStyle(fontSize: 20),),
-            Text("25 min", style: TextStyle(fontSize: 28),),
-            Text("Je me change les idées pendant", style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
-            Text("5 min", style: TextStyle(fontSize: 28),),
-            Text("Et je recommence...", style: TextStyle(fontSize: 20),),
+            Text("Je m'occupe pendant", style: TextStyle(fontSize: 27),),
+            Text("25 min", style: TextStyle(fontSize: 35),),
+            Text("Je me change les idées pendant", style: TextStyle(fontSize: 27), textAlign: TextAlign.center,),
+            Text("5 min", style: TextStyle(fontSize: 35),),
+            Text("Et je recommence...", style: TextStyle(fontSize: 27),),
           ]
       ),
     );

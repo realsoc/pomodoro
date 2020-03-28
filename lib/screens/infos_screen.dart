@@ -32,13 +32,8 @@ class _InfosScreenState extends State<InfosScreen>
   }
 
   _launchUrl(String url) async {
-    print("launch");
     if (await canLaunch(url)) {
-      print("launch2");
-
       await launch(url);
-      print("launch3");
-
     } else {
       throw 'Could not launch $url';
     }
@@ -53,12 +48,12 @@ class _InfosScreenState extends State<InfosScreen>
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text("Qui suis-je ?", style: TextStyle(fontSize: 24),),
+            Text("Qui suis-je ?", style: TextStyle(fontSize: 30),),
             Column(
               children: <Widget>[
-                Text("Hugo", style: TextStyle(fontSize: 18),),
-                Text("27ans", style: TextStyle(fontSize: 18),),
-                Text("Développeur", style: TextStyle(fontSize: 18),),
+                Text("Hugo", style: TextStyle(fontSize: 24),),
+                Text("27ans", style: TextStyle(fontSize: 24),),
+                Text("Développeur", style: TextStyle(fontSize: 24),),
               ],
             ),
             Row(
@@ -120,16 +115,16 @@ class _InfosScreenState extends State<InfosScreen>
                 ),
               ],
             ),
-            Text("La méthode pomodoro", style: TextStyle(fontSize: 24),),
+            Text("La méthode pomodoro", style: TextStyle(fontSize: 32),),
             Padding(
               padding: EdgeInsets.all(5),
               child: Text("La technique Pomodoro est une technique de gestion du temps développée par Francesco Cirillo à la fin des années 1980",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 18),
+                style: TextStyle(fontSize: 20),
               ),
             ),
             FlatButton(
-              child: Text("En savoir plus", style: TextStyle(fontSize: 18),),
+              child: Text("En savoir plus", style: TextStyle(fontSize: 22),),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   side: BorderSide()
